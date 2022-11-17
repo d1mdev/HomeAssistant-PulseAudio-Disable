@@ -30,7 +30,7 @@
 #    v1.2  - Fixed bug in Docker exec commands, expanded error checking.
 #    v1.3  - Added boolean settings to enable/disable (1) change run params (2) load PA module, (3) set null devices as defaults (sink and input)
 #    v1.4  - Added boolean setting to disable bluetooth module
-#    v1.5  - Changed path of s6 run path with new Home Assiatant 2022, added SLEEP_TIME as PARAM
+#    v1.5  - Changed s6 run path for new Home Assiatant 2022, added SLEEP_TIME as PARAM
 #
 ###############################################################################
 me=`basename "$0"`
