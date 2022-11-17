@@ -7,9 +7,9 @@ At the time of writing (and actually already since long before) there are issues
     
 This is typically the case for the following:    
 ```
-RPI (host) OS: Raspbian version 10 (buster), 5.10.11-v7
+RPI (host) OS: Raspbian version 11 (bullseye), 5.15.76-v8+
 hassio_audio OS: Alpine Linux, 3.13.1
-hassio_audio image (tag): 2021.02.1
+hassio_audio image (tag): 2022.07.0
 ```    
     
 One workaround to all this is to load the [PulseAudio **```module-suspend-on-idle```**](https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Modules/#module-suspend-on-idle) module in the ```hassio_audio``` container. As the name suggests, this module suspends the PulseAudio processing within ```hassio_audio``` when it is idle for some time.     
