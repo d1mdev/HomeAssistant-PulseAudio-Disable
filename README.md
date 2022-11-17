@@ -50,14 +50,16 @@ The Docker ```pactl``` load command is wrapped in a shell script. This script wi
    (see /var/log/user.log)    
     
 #### Configuration
-The script uses two boolean variables that you can edit to change the program behavior. 
+The script uses five boolean variables that you can edit to change the program behavior. 
 Both are initially true, which means the logging parameters are updated *and* the module is loaded to suspend PulseAudio when idle. 
 Set the proper value based on your needs:    
 Variable | | Description
 --| -- | --
 DO_CHANGE_PARAMS |  | set to true to update the PulseAudio parameters, else false to skip.
-DO_LOAD_MODULE |  | set to true to load the PulseAudio ```module-suspend-on-idle``` module, else false to skip.    
+DO_LOAD_MODULE |  | set to true to load the PulseAudio ```module-suspend-on-idle``` module, else false to skip.
 DO_SET_NULL_AS_DEFAULT |  | set to true to load the PulseAudio ```module-null-sink``` module and set default sink and source (input) to it, else false to skip.
+DO_UNLOAD_BLUETOOTH_MODULE |  | set tu true to unload the PulseAudio ```module-bluetooth-discover``` module, else false to skip.
+SLEEP_TIME |  | base sleep time for delay statements in script.
     
 Note that if the ```docker exec``` command is executed immediately after receiving the container start event, the container is not accepting commands yet and a *"Connection failure: Connection refused"* error is raised. To prevent this error the script will wait for 5 seconds to allow the container to settle down, before executing the command. Based on your hardware and system performance you may have to tune this delay to make things work.    
 Search for:  ```sleep 5``` and change as needed.    
