@@ -59,7 +59,6 @@ legacy_config="/run/s6/services/pulseaudio/run"
 #------------------------------------------------------------------------------
 function change_pulseaudio () {
 
-    set -x
     if [[ $DO_CHANGE_PARAMS = true ]]; then
         # Check if the legacy directory exists (still older version of container running).
         res=$(docker exec -i hassio_audio [[ -f \$legacyconfig ]] 2>&1)
@@ -110,14 +109,11 @@ function change_pulseaudio () {
         #docker exec -i hassio_audio pactl set-default-sink alsa_output.pci-0000_07_00.1.hdmi-stereo-extra2
         docker exec -i hassio_audio pactl set-default-sink null
         docker exec -i hassio_audio pactl set-default-source null.monitor
-        set +x
     fi
 
     if [[ $DO_UNLOAD_BLUETOOTH_MODULE = true ]]; then
-        set -x
         logger -p user.notice  "${1}: PulseAudio unloading bluetooth module"
         docker exec -i hassio_audio pactl unload-module module-bluetooth-discover
-        set +x
     fi
 }
 
